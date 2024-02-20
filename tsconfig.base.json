@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "esModuleInterop": true,
+    "paths": {
+      "@effect-playground/express-service": ["libs/express-service/src/index.ts"],
+      "@effect-playground/spooler": ["libs/spooler/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
