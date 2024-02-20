@@ -1,5 +1,5 @@
 import { Layer, Effect, Runtime } from "effect"
-import { offerSpoolService } from "./services";
+import { flushSpoolService, offerSpoolService } from "./services";
 import { ExpressService } from "./express-service/express.service";
 import { spoolServiceLayer } from "./spooler/spool-service.layer";
 import { spoolQueueLayer } from "./spooler/spool-queue.layer";
@@ -39,7 +39,11 @@ const ServerLive = Layer.scopedDiscard(
 
 // Combine the layers
 const AppLive = ServerLive.pipe(
+  //these 2 service has a schedule attached to test the queue.
+  //they dont work as expected.
+  //they are blocking the thread
   Layer.provide(offerSpoolService),
+  Layer.provide(flushSpoolService),
 
   Layer.provide(spoolServiceLayer),
   Layer.provide(spoolQueueLayer),

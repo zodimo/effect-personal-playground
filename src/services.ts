@@ -18,4 +18,4 @@ export const flushSpoolService = Layer.scopedDiscard(Effect.gen(function* (_) {
     const spoolService = yield* _(SpoolService);
     yield* _(logSpoolSize('before spool flush'));
     yield* _(spoolService.flush())
-}).pipe(Effect.repeat({ schedule: Schedule.spaced('5 seconds') })));
+}).pipe(Effect.fork, Effect.repeat({ schedule: Schedule.spaced('5 seconds') })));
