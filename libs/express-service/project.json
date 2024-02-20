@@ -1,0 +1,19 @@
+{
+  "name": "express",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/express/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/express",
+        "main": "libs/express/src/index.ts",
+        "tsConfig": "libs/express/tsconfig.lib.json",
+        "assets": ["libs/express/*.md"]
+      }
+    }
+  },
+  "tags": []
+}
