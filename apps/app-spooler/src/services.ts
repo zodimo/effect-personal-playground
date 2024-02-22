@@ -1,5 +1,5 @@
 import { Effect, Layer, Schedule } from "effect";
-import { SpoolService } from "./spooler/spool-service.service";
+import { SpoolService } from "@effect-playground/spooler";
 
 export const logSpoolSize = (contextMessage: string) => Effect.gen(function* (_) {
     const spoolService = yield* _(SpoolService);

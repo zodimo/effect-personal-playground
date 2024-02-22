@@ -1,9 +1,7 @@
 import { Layer, Effect, Runtime } from "effect"
-import { flushSpoolService, offerSpoolService } from "./services";
-import { ExpressService } from "./express-service/express.service";
-import { spoolServiceLayer } from "./spooler/spool-service.layer";
-import { spoolQueueLayer } from "./spooler/spool-queue.layer";
-import { ExpressServiceImpl } from "./express-service/express.impl";
+import { ExpressService, ExpressServiceImpl } from "@effect-playground/express"
+import { flushSpoolService, offerSpoolService } from "./services"
+import { spoolQueueLayer, spoolServiceLayer } from "@effect-playground/spooler"
 
 // Define the main route, IndexRouteLive, as a Layer
 const IndexRouteLive = Layer.effectDiscard(
