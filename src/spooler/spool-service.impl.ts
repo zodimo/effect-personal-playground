@@ -1,11 +1,18 @@
 import { Effect } from "effect";
 import { SpoolQueue } from "./spool-queue.service";
+import { SpoolService } from "./spool-service.service";
+
 
 export class SpoolServiceImpl {
     offer(item: string): Effect.Effect<void, never, SpoolQueue> {
-        return Effect.gen(function* (_) {
+        return Effect.gen(this, function* (_) {
             const spoolQueue = yield* _(SpoolQueue);
-            return yield* _(spoolQueue.offer(item));
+            yield* _(spoolQueue.offer(item));
+            const size = yield* _(spoolQueue.size);
+            if (size > 10) {
+                yield* _(this.flush());
+            }
+
         });
     }
     takeAll(): Effect.Effect<string[], never, SpoolQueue> {
