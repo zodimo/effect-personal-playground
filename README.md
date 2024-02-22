@@ -2,7 +2,7 @@
 Testing some ideas.
 
 # Install
-`npm i`
+`pnpm install`
 
 # Test Run
-`npm run dev`
+`nx serve app-spooler`
